@@ -9,8 +9,8 @@ async function bootstrap() {
       'https://graph-dev-frontend-qkbr27q0k-holarmideys-projects.vercel.app',
       'http://localhost:5173',
     ],
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
-    allowedHeaders: 'Content-Type, Authorization',
+    methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
   });
 
