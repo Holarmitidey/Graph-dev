@@ -16,4 +16,19 @@ export class DevelopersController {
   async findById(@Param('id') id: string) {
     return this.developersService.findById(id);
   }
+
+  @Get(':id/technologies')
+  async findTechnologies(@Param('id') id: string) {
+    return this.developersService.findTechnologies(id);
+  }
+
+  @Get(':id/similar')
+  async findSimilar(@Param('id') id: string) {
+    return this.developersService.findSimilar(id);
+  }
+
+  @Get(':id/profile')
+  async getProfile(@Param('id') id: string) {
+    return this.developersService.getProfile(id);
+  }
 }

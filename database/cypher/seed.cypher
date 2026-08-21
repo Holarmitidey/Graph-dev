@@ -265,3 +265,73 @@ CREATE
     (job)-[:REQUIRES]->(react),
     (job)-[:REQUIRES]->(node);
 
+MATCH
+    (maize:Project {id: 'project_maize'}),
+    (postgresql:Technology {id: 'tech_postgresql'}),
+    (docker:Technology {id: 'tech_docker'}),
+    (fastapi:Technology {id: 'tech_fastapi'})
+CREATE
+    (maize)-[:USES]->(postgresql),
+    (maize)-[:USES]->(docker),
+    (maize)-[:USES]->(fastapi);
+
+MATCH
+    (marketplace:Project {id: 'project_marketplace'}),
+    (react:Technology {id: 'tech_react'}),
+    (nestjs:Technology {id: 'tech_nestjs'}),
+    (postgresql:Technology {id: 'tech_postgresql'}),
+    (docker:Technology {id: 'tech_docker'})
+CREATE
+    (marketplace)-[:USES]->(react),
+    (marketplace)-[:USES]->(nestjs),
+    (marketplace)-[:USES]->(postgresql),
+    (marketplace)-[:USES]->(docker);
+
+MATCH
+    (s:Skill),
+    (t:Technology)
+WHERE s.name = t.name
+MERGE (s)-[:REPRESENTS]->(t);
+
+MATCH path =
+  (d:Developer {id: 'dev_003'})
+  -[:HAS_SKILL]->(s:Skill)
+  -[:REPRESENTS]->(t:Technology)
+  <-[:USES]-(p:Project)
+RETURN path;
+
+MATCH
+    (job:Job {id: 'job_cloud_001'}),
+    (python:Skill {id: 'skill_python'}),
+    (nestjs:Skill {id: 'skill_nestjs'}),
+    (aws:Skill {id: 'skill_aws'}),
+    (docker:Skill {id: 'skill_docker'})
+CREATE
+    (job)-[:REQUIRES]->(python),
+    (job)-[:REQUIRES]->(nestjs),
+    (job)-[:REQUIRES]->(aws),
+    (job)-[:REQUIRES]->(docker);
+
+MATCH
+    (python:Skill {id: 'skill_python'}),
+    (fastapi:Technology {id: 'tech_fastapi'}),
+    (nestjsSkill:Skill {id: 'skill_nestjs'}),
+    (nestjsTech:Technology {id: 'tech_nestjs'}),
+    (reactSkill:Skill {id: 'skill_react'}),
+    (reactTech:Technology {id: 'tech_react'}),
+    (docker:Skill {id: 'skill_docker'}),
+    (dockerTech:Technology {id: 'tech_docker'}),
+    (aws:Skill {id: 'skill_aws'}),
+    (awsTech:Technology {id: 'tech_aws'}),
+    (postgresql:Skill {id: 'skill_postgresql'}),
+    (postgresqlTech:Technology {id: 'tech_postgresql'}),
+    (redis:Skill {id: 'skill_redis'}),
+    (redisTech:Technology {id: 'tech_redis'})
+CREATE
+    (python)-[:REPRESENTS]->(fastapi),
+    (nestjsSkill)-[:REPRESENTS]->(nestjsTech),
+    (reactSkill)-[:REPRESENTS]->(reactTech),
+    (docker)-[:REPRESENTS]->(dockerTech),
+    (aws)-[:REPRESENTS]->(awsTech),
+    (postgresql)-[:REPRESENTS]->(postgresqlTech),
+    (redis)-[:REPRESENTS]->(redisTech);
