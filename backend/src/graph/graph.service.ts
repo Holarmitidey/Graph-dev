@@ -52,14 +52,24 @@ export class GraphService {
 
     const record = records[0];
 
+    const developer = record.get('developer');
+
     return {
-      developer: record.get('developer'),
+      developer: {
+        ...developer,
+        experienceYears: developer.experienceYears?.toNumber
+          ? developer.experienceYears.toNumber()
+          : developer.experienceYears,
+      },
+
       skills: record
         .get('skills')
         .filter((skill) => skill.id !== null),
+
       projects: record
         .get('projects')
         .filter((project) => project.id !== null),
+
       technologies: record
         .get('technologies')
         .filter((technology) => technology.id !== null),
