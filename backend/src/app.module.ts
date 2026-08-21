@@ -12,6 +12,7 @@ import { JobsService } from './jobs/jobs.service';
 import { TechnologiesModule } from './technologies/technologies.module';
 import { ProjectsModule } from './projects/projects.module';
 import { GraphModule } from './graph/graph.module';
+import { SkillsModule } from './skills/skills.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { GraphModule } from './graph/graph.module';
     TechnologiesModule,
     ProjectsModule,
     GraphModule,
+    SkillsModule,
   ],
   controllers: [AppController, DevelopersController, JobsController],
   providers: [AppService, DevelopersService, JobsService],
