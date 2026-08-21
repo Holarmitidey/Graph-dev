@@ -6,7 +6,8 @@ async function bootstrap() {
 
   app.enableCors({
     origin: [
-      'https://graph-dev-frontend-qkbr27q0k-holarmideys-projects.vercel.app',
+      'https://graph-dev-frontend-riw8o4zjv-holarmideys-projects.vercel.app',
+      'https://graph-dev-backend-na6qhsob1-holarmideys-projects.vercel.app',
       'http://localhost:5173',
     ],
     methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE', 'OPTIONS'],
