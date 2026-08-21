@@ -335,3 +335,9 @@ CREATE
     (aws)-[:REPRESENTS]->(awsTech),
     (postgresql)-[:REPRESENTS]->(postgresqlTech),
     (redis)-[:REPRESENTS]->(redisTech);
+
+MATCH
+  (paystack:Company {id: 'company_paystack'}),
+  (job:Job {id: 'job_backend_001'})
+CREATE
+  (paystack)-[:OFFERS]->(job);
